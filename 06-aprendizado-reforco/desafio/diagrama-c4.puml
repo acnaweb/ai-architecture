@@ -1,0 +1,13 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(env, "Ambiente")
+System_Boundary(s, "Agente RL") {
+  Container(policy, "Política", "Rede Neural", "Define ações com base no estado")
+  Container(reward, "Recompensa", "Função", "Fornece feedback")
+  Container(memory, "Experiência", "Replay Buffer", "Armazena interações")
+}
+Rel(env, policy, "Fornece estado")
+Rel(policy, env, "Executa ação")
+Rel(env, reward, "Envia recompensa")
+Rel(policy, memory, "Atualiza com experiência")
+@enduml

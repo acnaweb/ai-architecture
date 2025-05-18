@@ -1,0 +1,12 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user, "Ambiente Simulado")
+System_Boundary(cognitive, "Agente Cognitivo") {
+  Container(memory, "Memória", "Módulo declarativo", "Armazena fatos")
+  Container(attention, "Atenção", "Filtro de foco", "Seleciona informações relevantes")
+  Container(reasoning, "Raciocínio", "Sistema simbólico", "Decide ações com base na cognição")
+}
+Rel(user, attention, "Estimula")
+Rel(attention, reasoning, "Alimenta decisão")
+Rel(reasoning, memory, "Consulta/Atualiza")
+@enduml

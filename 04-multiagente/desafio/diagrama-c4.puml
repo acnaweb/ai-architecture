@@ -1,0 +1,12 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user, "Ambiente")
+System_Boundary(system, "Sistema Multiagente") {
+  Container(agent1, "Agente 1", "Autônomo", "Resolve parte da tarefa")
+  Container(agent2, "Agente 2", "Autônomo", "Colabora com Agente 1")
+  Container(comm, "Canal de Comunicação", "Mensagens", "Coordenação entre agentes")
+}
+Rel(user, agent1, "Solicita ação")
+Rel(agent1, comm, "Envia mensagem")
+Rel(comm, agent2, "Entrega mensagem")
+@enduml

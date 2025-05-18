@@ -1,0 +1,10 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user, "Usuário")
+System_Boundary(llm, "IA Generativa") {
+  Container(prompt, "Prompt Builder", "LangChain", "Prepara entrada do modelo")
+  Container(model, "LLM", "GPT/Claude", "Gera resposta")
+}
+Rel(user, prompt, "Escreve prompt")
+Rel(prompt, model, "Envia entrada")
+@enduml

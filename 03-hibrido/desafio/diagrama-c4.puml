@@ -1,0 +1,12 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(sensor_input, "Ambiente")
+System_Boundary(s, "Agente Híbrido") {
+  Container(reflex, "Camada Reativa", "FSM", "Responde rapidamente")
+  Container(plan, "Camada Deliberativa", "Planner", "Decide metas e planos")
+  Container(controller, "Coordenador", "Selector", "Define qual camada acionar")
+}
+Rel(sensor_input, controller, "Estimula")
+Rel(controller, reflex, "Aciona se simples")
+Rel(controller, plan, "Aciona se complexo")
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(operator, "Ambiente Físico")
+System_Boundary(robot, "Agente Embodied") {
+  Container(sensor, "Sensor", "LIDAR/Camera", "Percepção física")
+  Container(decision, "Controle", "ROS Node", "Decide movimento")
+  Container(actuator, "Atuador", "Motores", "Executa ação física")
+}
+Rel(operator, sensor, "Proporciona estímulo")
+Rel(sensor, decision, "Processa sinal")
+Rel(decision, actuator, "Envia comando")
+@enduml

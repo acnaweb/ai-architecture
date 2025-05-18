@@ -1,0 +1,12 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user, "Ambiente/Objetivo")
+System_Boundary(s, "Agente Deliberativo (BDI)") {
+  Container(beliefs, "Base de Crenças", "Estado atual", "Informações conhecidas")
+  Container(desires, "Objetivos", "Lista de desejos", "O que o agente quer alcançar")
+  Container(intention, "Executor", "Deliberação", "Plano atual em execução")
+}
+Rel(user, desires, "Define desejo")
+Rel(beliefs, intention, "Atualiza plano")
+Rel(desires, intention, "Seleciona plano")
+@enduml

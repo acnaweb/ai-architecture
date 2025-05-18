@@ -1,0 +1,12 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user, "Usuário")
+System_Boundary(orq, "Orquestração com LLMs") {
+  Container(agent_core, "Agente Coordenador", "LangGraph", "Divide e coordena tarefas")
+  Container(agent_a, "Agente A", "LLM + Tool", "Executa parte 1")
+  Container(agent_b, "Agente B", "LLM + Tool", "Executa parte 2")
+}
+Rel(user, agent_core, "Define tarefa")
+Rel(agent_core, agent_a, "Distribui subtarefa")
+Rel(agent_core, agent_b, "Distribui subtarefa")
+@enduml

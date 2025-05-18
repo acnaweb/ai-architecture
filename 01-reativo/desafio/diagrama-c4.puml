@@ -1,0 +1,10 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(env, "Ambiente")
+System_Boundary(s, "Agente Reativo") {
+  Container(sensor, "Sensor", "Código Python", "Detecta estímulos simples")
+  Container(actuator, "Atuador", "Motor/Ação", "Executa respostas baseadas na entrada")
+}
+Rel(env, sensor, "Envia estímulo")
+Rel(sensor, actuator, "Aciona")
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user, "Operador")
+System_Boundary(system, "Agente com Planejamento") {
+  Container(goal, "Meta", "Objetivo", "Estado desejado")
+  Container(model, "Modelo do Mundo", "Mapa/Estados", "Conhecimento do ambiente")
+  Container(planner, "Planejador", "PDDL/STRIPS", "Gera plano de ações")
+  Container(executor, "Executor", "FSM", "Executa plano passo a passo")
+}
+Rel(user, goal, "Define")
+Rel(goal, planner, "Envia objetivo")
+Rel(model, planner, "Usa ambiente")
+Rel(planner, executor, "Entrega plano")
+@enduml

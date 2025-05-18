@@ -1,0 +1,10 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+Person(user, "Especialista")
+System_Boundary(expert, "Agente Simbólico") {
+  Container(rules, "Regras", "CLIPS", "Base de conhecimento")
+  Container(infer, "Mecanismo de Inferência", "Motor Lógico", "Aplica regras")
+}
+Rel(user, rules, "Codifica regras")
+Rel(rules, infer, "Usadas para inferir")
+@enduml
